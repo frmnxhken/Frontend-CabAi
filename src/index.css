@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --secondary-bg: #171717;
+  --foreground-text: #FAFAFA;
+  --mute-foreground: #9CA3AF
+}
+
+@layer base {
+  body {
+    @apply bg-[#0A0A0A] text-[var(--foreground-text)];
+  }
+}
+
+@layer utilities {
+  .text-mute {
+    color: var(--mute-foreground);
+  }
+
+  .bg-secondary {
+    background-color: var(--secondary-bg);
+  }
+}
+
+.bg-grid {
+  position: relative;
+  background-color: #0A0A0A;
+  background-image:
+    linear-gradient(#1f1f1f 1px, transparent 1px),
+    linear-gradient(90deg, #1f1f1f 1px, transparent 1px);
+  background-size: 40px 40px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bg-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      #0A0A0A 0%,
+      transparent 20%,
+      transparent 80%,
+      #0A0A0A 100%);
+  z-index: 1;
+}
+
+.bg-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center,
+      rgba(85, 247, 85, 0.20),
+      rgba(85, 247, 93, 0.01),
+      transparent 70%);
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
